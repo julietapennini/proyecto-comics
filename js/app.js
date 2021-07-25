@@ -4,16 +4,31 @@ const timestamp = Date.now();
 
 //Encriptado de las llaves
 const hash = md5(timestamp + privada + publica);
+const previousButton = document.getElementById('previous-button');
+const nextButton = document.getElementById('next-button');
+
+let offset = 0;
 
 console.log(hash);
 
-const url = `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${publica}&hash=${hash}`;
+const fetchData = () => {
+    const url = `https://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
 
-const imprimirData = arr => {
-    console.log(arr)
+    fetch(url)
+    .then(response => response.json())
+    .then(obj => imprimir(obj.data.results))
+    .catch(error => console.error(error))
 }
 
-fetch(url)
-.then(response => response.json())
-.then(obj => imprimirData(obj.data.results))
-.catch(error => console.error(error))
+fetchData();
+
+previousButton.addEventListener('click', () =>{
+    offset -= 20;
+    fetchData();
+})
+
+nextButton.addEventListener('click', () =>{
+    offset += 20;
+    fetchData();
+})
+
