@@ -4,22 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+     <!---Bulma--->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+     <!---Links CSS--->
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Comics</title>
 </head>
 <body>
+  
+  <section class="hero is-success is-halfheight">
+    <div class="hero-body"></div>
+  </section>
 
+  <!---------------------------------------########## MAIN ##########-------------------------------->
   <main class="container">
+    <nav class="navbar my-5" role="navigation" aria-label="main navigation">
+      <div id="navbarBasicExample" class="navbar-menu">
+          <label for="">Búsqueda</label>
+          <input class="input is-expanded is-half" type="text" placeholder="Normal input">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Tipo
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                Comics
+              </a>
+              <a class="navbar-item">
+                Personajes
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Orden
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                A-Z
+              </a>
+              <a class="navbar-item">
+                Z-A
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-light">
+                Buscar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <p> El total es de: <span id="total">0</span></p>
     <div id="root" class="columns is-flex-wrap-wrap">
     </div>
+    <!--------------Comic information--------------->
+    <section id="container-comic-info" class="container mb-5">
+      <div id="comic-info" class="p-6"></div>
+      <div id="comic-characters-results" class="p-6"></div>
+      <div id="comic-characters-info" class="columns is-flex is-flex-wrap-wrap px-6 pt-0"></div>
+    </section>
+    <section id="container-character-info" class="container mb-5">
+        <div id="character-info" class="p-6"></div>
+        <div id="character-comics-results" class="p-6"></div>
+        <div id="character-comics-info" class="columns is-flex is-flex-wrap-wrap px-6 pt-0"></div>
+    </section>
   </main>
-
+<!---------------------------------------########## FOOTER ##########-------------------------------->
  <footer class="container">
   <nav class="pagination" role="navigation" aria-label="pagination">
-    <a id="previous-button" class="pagination-previous">Previous</a>
-    <a id="next-button" class="pagination-next">Next page</a>
+    <button id="previous-button" class="pagination-previous">Previous</button>
+    <button id="next-button" class="pagination-next">Next page</button>
   </nav>
  </footer>
 

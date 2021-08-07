@@ -32,3 +32,9 @@ nextButton.addEventListener('click', () =>{
     fetchData();
 })
 
+const getId = id => {
+    const url = `https://gateway.marvel.com/v1/public/comics/${id}?ts=${timestamp}&apikey=${publica}&hash=${hash}`;
+    fetch(url)
+        .then(resp => resp.json())
+        .then(obj => printDetailComic(obj.data.results))
+}
